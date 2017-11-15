@@ -8,6 +8,11 @@ awkward_armadillos -- yuJ, wuJ, wangK, moiT
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 
 
+jenY -- 2017-11-15 00:21
+Added initial css file and bootstrap integrated HTML
+	- from 13_rest hw
+__init__.py added to utils folder (needed to regard .py files as modules)
+	
 jenY -- 2017-11-15 00:14
 Added devlog
 Completed first two sections of design doc
