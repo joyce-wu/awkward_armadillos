@@ -8,6 +8,11 @@ awkward_armadillos -- yuJ, wuJ, wangK, moiT
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 
 
+moiT -- 2017-11-15 13:17
+Created data_scraper.py in util folder
+  - will take the text of the review from the webpage
+Completed the database schema for accounts
+
 jenY -- 2017-11-15 00:21
 Added initial css file and bootstrap integrated HTML
 	- from 13_rest hw
