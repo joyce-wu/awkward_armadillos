@@ -26,3 +26,6 @@ __init__.py added to utils folder (needed to regard .py files as modules)
 jenY -- 2017-11-15 00:14
 Added devlog
 Completed first two sections of design doc
+joyceW -- 2017-11-16 13:18:50
+added bootstrap and html files for movie review page
+
