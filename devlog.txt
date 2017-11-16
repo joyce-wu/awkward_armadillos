@@ -8,6 +8,11 @@ awkward_armadillos -- yuJ, wuJ, wangK, moiT
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 
 
+jenY -- 2017-11-15 21:33
+Began work on parsing through json object string
+access_url() function created
+design.pdf added to root
+	
 moiT -- 2017-11-15 13:17
 Created data_scraper.py in util folder
   - will take the text of the review from the webpage
