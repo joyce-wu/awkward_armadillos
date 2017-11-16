@@ -14,5 +14,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def start():
-    pass
+    render_template('home.html')
+
+@app.route("/search")
+def search():
+    
+    render_template("movie_review.html")
 
