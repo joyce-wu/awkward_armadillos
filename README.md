@@ -48,8 +48,5 @@ NYT Movie Reviews API:
 
 [Source Documentation](http://developer.nytimes.com/movie_reviews_v2.json)
 
-API Key: 46da8b1424754c3b98e0dcb908aaca8a
-
 OMDb: 
 [Source Documentation](http://www.omdbapi.com/)
-API Key: de1ce232
