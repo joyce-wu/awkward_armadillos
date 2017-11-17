@@ -44,4 +44,6 @@ moiT -- 2017-11-16 20:02
 Created nyt_processing and omdb_processing
 nyt_processing is now fully functional
     - can get reviews, titles, and most recent entries
+started on omdb_processing
+    - can get the movie data using nyt to get the title
 
