@@ -43,12 +43,17 @@ def get_review(query):
     else:
         try:
             d = access_url(query)
-            link = d['results'][0]['link']['url']
-            return scraper.scrape(link)
+            links = []
+            reviews=[]
+            for each in d['results']:
+                links.append(each['link']['url'])
+            for link in links:
+                reviews.append(scraper.scrape(link))
+            return reviews
         except:
             print "No review found"
 
 
 #TESTING...
-#print get_review('silence of the lambs')
+print get_review('silence of the lambs')
 #works
