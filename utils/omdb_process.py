@@ -30,10 +30,12 @@ def access_url(query):
            
 
 #Wrapper for OMDB search function
-def get_movies(query=""):
+def get_movie_data(query=""):
     q = nyt.get_title(query)
     d = access_url(q)
     return d
+
+#def get_
 
 #print get_movies('silence of the lambs')
     
