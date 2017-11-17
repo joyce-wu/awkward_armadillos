@@ -7,25 +7,41 @@ awkward_armadillos -- yuJ, wuJ, wangK, moiT
    \:\/.:| |\:\____/\\ ..::/ / \:\/___/\\:\_\ \ \\:\_\ \ \
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 
-
+=======================================================
 jenY -- 2017-11-15 21:33
 Began work on parsing through json object string
 access_url() function created
 design.pdf added to root
-	
+
+=======================================================
 moiT -- 2017-11-15 13:17
+-----------------------
 Created data_scraper.py in util folder
   - will take the text of the review from the webpage
 Completed the database schema for accounts
 
+=======================================================
 jenY -- 2017-11-15 00:21
+-----------------------
 Added initial css file and bootstrap integrated HTML
 	- from 13_rest hw
 __init__.py added to utils folder (needed to regard .py files as modules)
-	
+
+=======================================================
 jenY -- 2017-11-15 00:14
+-----------------------
 Added devlog
 Completed first two sections of design doc
+
+=======================================================
 joyceW -- 2017-11-16 13:18:50
+-----------------------------
 added bootstrap and html files for movie review page
+
+=======================================================
+moiT -- 2017-11-16 20:02
+-----------------------
+Created nyt_processing and omdb_processing
+nyt_processing is now fully functional
+    - can get reviews, titles, and most recent entries
 
