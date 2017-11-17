@@ -8,6 +8,11 @@ awkward_armadillos -- yuJ, wuJ, wangK, moiT
     \____/_/ \_____\/ \___/_(   \_____\/ \_____\/ \_____\/
 
 =======================================================
+wangK -- 2017-11-14 13:00
+-----------------------
+Procured API keys
+
+=======================================================
 jenY -- 2017-11-15 21:33
 Began work on parsing through json object string
 access_url() function created
@@ -19,6 +24,11 @@ moiT -- 2017-11-15 13:17
 Created data_scraper.py in util folder
   - will take the text of the review from the webpage
 Completed the database schema for accounts
+
+=======================================================
+wangK -- 2017-11-15 20:00
+-----------------------
+Completed sitemap
 
 =======================================================
 jenY -- 2017-11-15 00:21
@@ -46,4 +56,9 @@ nyt_processing is now fully functional
     - can get reviews, titles, and most recent entries
 started on omdb_processing
     - can get the movie data using nyt to get the title
-
+    
+=======================================================
+wangK -- 2017-11-16 20:17
+-----------------------
+Procured new API keys
+Updated readMe
