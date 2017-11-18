@@ -5,7 +5,7 @@ Kelly Wang, Tiffany Moi, Joyce Wu, Jen Yu
 '''
 
 from flask import Flask, render_template
-from utils import read
+from utils import process
 import urllib2, json
 
 app = Flask(__name__)
