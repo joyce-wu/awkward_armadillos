@@ -1,5 +1,5 @@
 import urllib2, json
-import data_scraper as scraper
+#import data_scraper as scraper
 
 nyt_base="https://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key="
 
@@ -34,8 +34,10 @@ def access_url(query):
 
 def get_title(query=""):
     d = access_url(query)
-    print  d['results'][0]["display_title"]
-    return d['results'][0]["display_title"]
+    l = []
+    for a in d['results']:
+        l.append(a["display_title"])
+    return l
 
 def get_review(query):
     if query =="":
@@ -55,5 +57,5 @@ def get_review(query):
 
 
 #TESTING...
-print get_review('silence of the lambs')
+print get_title('silence of the lambs')
 #works
