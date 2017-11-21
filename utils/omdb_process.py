@@ -16,7 +16,7 @@ def access_url(query):
     acc = omdb_base + key
     if (query == ""):
         print "give me something to search for"
-    
+
     else:
        try:
            acc += "&t="
@@ -27,10 +27,18 @@ def access_url(query):
            return d
        except:
            print "your key is wrong or you have reached your monthy quota1"
-           
+
+def get_info(query):
+    d = access_url(query)
+    info = {}
+    info["Title"] = d["Title"]
+    info["Year"] = d["Year"]
+    info["Genre"] = d["Genre"]
+    info["Plot"] = d["Plot"]
+    return info
 
 #Wrapper for OMDB search function
-def get_movie_data(query=""):
+def get_movie_data(query):
     q = nyt.get_title(query)
     d = access_url(q)
     return d
@@ -38,4 +46,3 @@ def get_movie_data(query=""):
 #def get_
 
 #print get_movies('silence of the lambs')
-    
