@@ -1,9 +1,7 @@
 import urllib2, json
 import nyt_process as nyt
 
-
 omdb_base="http://www.omdbapi.com/?apikey="
-
 
 f = open("key.txt", "r")
 txt = f.read()
@@ -24,7 +22,7 @@ def access_url(query):
            acc += q
            data = urllib2.urlopen(acc)
            d = json.loads(data.read())
-           
+
            return d
        except:
            print "your key is wrong or you have reached your monthy quota1"
@@ -36,6 +34,8 @@ def get_info(query):
     info["Year"] = d["Year"]
     info["Genre"] = d["Genre"]
     info["Plot"] = d["Plot"]
+    info["Poster"] = d["Poster"]
+    info["Director"] = d["Director"]
     return info
 
 #Wrapper for OMDB search function
@@ -45,11 +45,11 @@ def get_movie_data(query):
         print name
         d = access_url(name)
         for key in d:
-            print key 
+            print key
             print d[key]
     return d
 
 #def get_
 
-#print 
-print get_movie_data('silence of the lambs')
+#print
+print get_info('silence of the lambs')
