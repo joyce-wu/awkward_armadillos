@@ -67,3 +67,6 @@ Updated readMe
 moiT -- 2017-11-20 22:17
 -----------------------
 Added db setup for accounts
+wuJ -- 2017-11-22 13:16:18
+omdb finished, working on movie_review html file now
+
