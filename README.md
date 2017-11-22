@@ -11,10 +11,27 @@ In this website, we integrate two APIS: The NYT Movie Reviews API and OMDb API. 
 ### Launch Instructions
 
 Needed: 
-* Flask
 * Python
+* Flask
+* LXML
+* CSSSelect
+* Requests (external Flask module)
 
-Flask and Python are needed in order to run this webapp. You should install Flask in a virtual environment so it doesn't interfere with your root python install. 
+Python, Flask, LXML and CSSSelect are needed in order to run this webapp. You should install Flask, LXML, CSSSelect, and Requests in a virtual environment so it doesn't interfere with your root python install. 
+
+Run these in the terminal to install all dependencies. 
+```
+$ (venv) pip install flask
+```
+```
+$ (venv) pip install lxml
+```
+```
+$ (venv) pip install cssselect
+```
+```
+$ (venv) pip install requests
+```
 
 *__To Run:__*
 
