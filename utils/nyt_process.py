@@ -60,7 +60,7 @@ def get_review(query):
 
 
 #TESTING...
-#t = get_title('silence of the lambs')[0]
+#t = get_title('yo')[0]
 #print t
 #works
 #print get_review(t)
