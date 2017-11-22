@@ -16,7 +16,7 @@ def start():
 
 @app.route("/search", methods=['POST', 'GET'])
 def search():
-    .
+    
     movie_list = nyt_process.get_title(request.form["title"])
     print movie_list
     movies = nyt_process.get_title(movie_list)
