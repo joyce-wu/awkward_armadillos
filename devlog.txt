@@ -94,4 +94,8 @@ yuJ -- 2017-11-23 12:10
 Added search.html to display search results
   * Search results displayed with movie name and a short summary.
   * Button includes two hidden inputs: movie name and review url
-  
+  * For loop in jinja to display all results
+Modified search_results() function
+  * Sublist includes short summary
+Message "No results found." passed when no results are made available
+======================================================
