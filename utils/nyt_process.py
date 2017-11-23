@@ -43,24 +43,30 @@ def access_url(query):
            
 
 '''
-get_title(query): Gets a list of movies from a searched keyword
+search_results(query): Gets a list of movies from a searched keyword
  * Wrapper for NYT API's search functionality
  * Pulls .json object string after searching query
- * Parsed to return only a list of movie titles
  * Used in display of search results
+ * Sublist Schema: [0]-Movie Title, [1]-Review URL, [2]-Short Summary
 KEEP TRACK OF HOW MANY TIMES THIS IS CALLED, AS IT USES access_url().
 '''
 def search_results(query=""):
     d = access_url(query)
     results = []
     l = []
-    for a in d['results']:
-        #append movie title and review url
-        l.append(a["display_title"])
-        l.append(a["link"]["url"])
-        #append sublist to main result list
-        results.append(l)
-    return results
+    try:
+        for a in d['results']:
+            #append movie title and review url
+            l.append(a["display_title"])
+            l.append(a["link"]["url"])
+            l.append(a["summary_short"])
+            #append sublist to main result list
+            results.append(l)
+            l = []
+        return results
+    except:
+        return "No results."
+    
 
 '''
 get_review(query): Uses data scraping to retrieve the text of review on the NYT API matching a certain search criteria (query). 
