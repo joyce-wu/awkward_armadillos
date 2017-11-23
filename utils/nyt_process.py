@@ -1,15 +1,25 @@
+'''
+Python file for handling the NYT Movie Reviews API
+Utilized in the: 
+ * Search Bar
+ * Reviews on a movie's page (data scraping)
+'''
 import urllib2, json
 import data_scraper as scraper
 
 nyt_base="https://api.nytimes.com/svc/movies/v2/reviews/search.json?api-key="
 
+#read NYT API Key from the 'keys.txt' file
 f = open("key.txt", "r")
 txt = f.read()
 key = txt.split('\n')[0]
 
-#Keep track of how often this function is called!
-#DON'T go over quotas!!
-
+'''
+access_url(query) - Function to pull data from the NYT API
+ * query parameter is used to access specific information in API
+ * Used in search bar, and later for extracting the movie review
+KEEP TRACK OF HOW OFTEN THIS FXN IS CALL TO NOT GO OVER QUOTAS.
+'''
 def access_url(query):
     acc = nyt_base + key
     if (query == ""):
@@ -18,32 +28,54 @@ def access_url(query):
             d = json.loads(data.read())
             return d
         except:
-            print "your key is wrong or you have reached your monthy quota1"
+            print "Your key is wrong or you have reached your monthy quota.(1)"
     
     else:
        try:
            acc += "&query="
            q = query.replace(' ', "+")
            acc += q
-           #print q
-           #print acc
            data = urllib2.urlopen(acc)
            d = json.loads(data.read())
            return d
        except:
-           print "your key is wrong or you have reached your monthy quota2"
+           print "Your key is wrong or you have reached your monthy quota.(2)"
            
 
-def get_title(query=""):
+'''
+get_title(query): Gets a list of movies from a searched keyword
+ * Wrapper for NYT API's search functionality
+ * Pulls .json object string after searching query
+ * Parsed to return only a list of movie titles
+ * Used in display of search results
+KEEP TRACK OF HOW MANY TIMES THIS IS CALLED, AS IT USES access_url().
+'''
+def search_results(query=""):
     d = access_url(query)
+    results = []
     l = []
     for a in d['results']:
+        #append movie title and review url
         l.append(a["display_title"])
-    return l
+        l.append(a["link"]["url"])
+        #append sublist to main result list
+        results.append(l)
+    return results
 
-def get_review(query):
+'''
+get_review(query): Uses data scraping to retrieve the text of review on the NYT API matching a certain search criteria (query). 
+ * Used when movie is clicked on within the search results/homepage.
+ * Based on full movie name, gets reviews from site.
+- Jen: rethinking this, we probably want to get the review url in the search, and then scrape that later when the user clicks the link...
+'''
+def get_review(url):
+    try:
+        return scraper.scrape(url)
+    except:
+        print "No Review."
+    '''
     if query =="":
-        print "give me a title"
+        print "No movie title given."
     else:
         try:
             d = access_url(query)
@@ -56,12 +88,7 @@ def get_review(query):
             return reviews
         except:
             print "No review found"
+    '''
 
 
-
-#TESTING...
-#t = get_title('yo')[0]
-#print t
-#works
-#print get_review(t)
 
