@@ -64,7 +64,9 @@ def logout():
 @app.route("/search", methods=['POST', 'GET'])
 def search():
     movie_list = nyt_process.search_results(request.args["title"])
-    return render_template("search_res.html", movies = movie_list)
+    if len(movie_list) == 0:
+        return render_template("search.html", message = "No Results found.")
+    return render_template("search.html", movies = movie_list)
 
 @app.route("/movie_review", methods=['POST', 'GET'])
 def get_movie():
