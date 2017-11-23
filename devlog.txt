@@ -89,3 +89,9 @@ Created database for user accounts
   * /data/ folder with filmadillo.db
   * database.py with functionality
 ======================================================
+yuJ -- 2017-11-23 12:10
+-----------------------
+Added search.html to display search results
+  * Search results displayed with movie name and a short summary.
+  * Button includes two hidden inputs: movie name and review url
+  
