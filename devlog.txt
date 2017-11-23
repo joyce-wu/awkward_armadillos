@@ -14,6 +14,7 @@ Procured API keys
 
 =======================================================
 jenY -- 2017-11-15 21:33
+-----------------------
 Began work on parsing through json object string
 access_url() function created
 design.pdf added to root
@@ -67,6 +68,24 @@ Updated readMe
 moiT -- 2017-11-20 22:17
 -----------------------
 Added db setup for accounts
+======================================================
 wuJ -- 2017-11-22 13:16:18
+-----------------------
 omdb finished, working on movie_review html file now
 
+======================================================
+yuJ -- 2017-11-23 08:45
+-----------------------
+Added html files for login, signup
+Fixed up homepage for site, included jinja blocks
+  * background for jumbotron
+  * Icons for login/signup/logout (if statements to toggle display)
+  * Arrested Development filler text
+Added functions for signup and login
+  * auth.py with functionality
+  * routes in app.py file
+Messages can be flashed (useful for debugging/msgs to user)
+Created database for user accounts
+  * /data/ folder with filmadillo.db
+  * database.py with functionality
+======================================================
