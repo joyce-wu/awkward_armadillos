@@ -65,7 +65,7 @@ def logout():
 def search():
     movie_list = nyt_process.search_results(request.args["title"])
     if len(movie_list) == 0:
-        return render_template("search.html", message = "No Results found.")
+        return render_template("search.html", message = "No Results found.") 
     return render_template("search.html", movies = movie_list)
 
 @app.route("/movie_review", methods=['POST', 'GET'])
@@ -74,13 +74,12 @@ def get_movie():
     movie = movie.split("\n")
     url = request.form['url']
     url = url.split("\n")
-    info = omdb_process.get_info(movie[0])
-    print "INFO= "
-    print info
     review = nyt_process.get_review(url[0])
-    print "REVIEW"
-    print review
-    return render_template("movie_review.html", title=info["Title"], year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review)
+    try:
+        info = omdb_process.get_info(movie[0])
+        return render_template("movie_review.html", title=movie[0].replace("_", " "), year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review)
+    except:
+        return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=review)
 
 if __name__ == "__main__":
     app.debug = True
