@@ -57,7 +57,8 @@ def search_results(query=""):
     try:
         for a in d['results']:
             #append movie title and review url
-            l.append(a["display_title"])
+            title = a["display_title"].replace(" ", "_")
+            l.append(title)
             l.append(a["link"]["url"])
             l.append(a["summary_short"])
             #append sublist to main result list
