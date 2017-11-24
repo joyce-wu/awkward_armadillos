@@ -122,4 +122,5 @@ moiT -- 2017-11-20 21:25
 -----------------------
 Fixed issue with movie titles with multiple words
 Added error handling to app.py for @movie_review
+Changed movie_review.html to show data
  
