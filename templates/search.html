@@ -9,7 +9,7 @@
   <br>
   {% for i in movies %}
   <form action = "/movie_review" method = 'POST' style="text-align:left">
-    <h3> {{ i[0] }} </h3>
+    <h3> {{ i[0].replace("_", " ") }} </h3>
     <p> {{ i[2] }} </p>
     <input type = "hidden" name = "title" value = {{ i[0] }}>
     <input type = "hidden" name = "url" value = {{ i[1] }}>
