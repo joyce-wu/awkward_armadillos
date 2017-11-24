@@ -70,9 +70,16 @@ def search():
 
 @app.route("/movie_review", methods=['POST', 'GET'])
 def get_movie():
-    movie = request.get("movie_val") #refer back for variable_names
-    info = omdb_process.get_info(movie)
-    review = nyt_process.get_review(movie)
+    movie = request.form['title'] #refer back for variable_names
+    movie = movie.split("\n")
+    url = request.form['url']
+    url = url.split("\n")
+    info = omdb_process.get_info(movie[0])
+    print "INFO= "
+    print info
+    review = nyt_process.get_review(url[0])
+    print "REVIEW"
+    print review
     return render_template("movie_review.html", title=info["Title"], year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review)
 
 if __name__ == "__main__":

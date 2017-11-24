@@ -8,7 +8,7 @@
   {% endif %}
   <br>
   {% for i in movies %}
-  <form action = "/display_movie" method = 'POST' style="text-align:left">
+  <form action = "/movie_review" method = 'POST' style="text-align:left">
     <h3> {{ i[0] }} </h3>
     <p> {{ i[2] }} </p>
     <input type = "hidden" name = "title" value = {{ i[0] }}>

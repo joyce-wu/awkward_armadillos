@@ -68,10 +68,20 @@ Updated readMe
 moiT -- 2017-11-20 22:17
 -----------------------
 Added db setup for accounts
+
 ======================================================
+moiT -- 2017-11-21 13:20
+-----------------------
+Fixed nyt_processing to get all titles
+
 wuJ -- 2017-11-22 13:16:18
 -----------------------
 omdb finished, working on movie_review html file now
+
+======================================================
+moiT -- 2017-11-20 13:21
+-----------------------
+Fixed app.py to correctly take in form data
 
 ======================================================
 yuJ -- 2017-11-23 08:45
@@ -88,6 +98,7 @@ Messages can be flashed (useful for debugging/msgs to user)
 Created database for user accounts
   * /data/ folder with filmadillo.db
   * database.py with functionality
+  
 ======================================================
 yuJ -- 2017-11-23 12:10
 -----------------------
@@ -98,4 +109,10 @@ Added search.html to display search results
 Modified search_results() function
   * Sublist includes short summary
 Message "No results found." passed when no results are made available
+
 ======================================================
+moiT -- 2017-11-20 20:03
+-----------------------
+Fixed app.py to get the hidden field values
+Fixed redirect of "More Info" under the search results
+@movie_review works now
