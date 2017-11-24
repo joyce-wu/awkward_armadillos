@@ -22,7 +22,6 @@ def access_url(query):
            acc += q
            data = urllib2.urlopen(acc)
            d = json.loads(data.read())
-
            return d
        except:
            print "your key is wrong or you have reached your monthy quota1"
