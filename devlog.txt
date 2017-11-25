@@ -124,3 +124,20 @@ Fixed issue with movie titles with multiple words
 Added error handling to app.py for @movie_review
 Changed movie_review.html to show data
  
+======================================================
+wangK -- 2017-11-21 22:30
+-----------------------
+Tested and made minor changes to nyt and omdb processes
+added home.html and all_movies.html
+app.py now runs!
+
+======================================================
+wangK -- 2017-11-22 13:19
+-----------------------
+troubleshoot app.py and search function
+
+======================================================
+wangK -- 2017-11-24 23:11
+-----------------------
+Fixed page titles
+Added list recommended movies to homepage
