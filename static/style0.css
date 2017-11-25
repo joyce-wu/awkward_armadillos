@@ -30,7 +30,7 @@ body
     background-image:url(../static/movies.jpg);
     background-position: 0% 25%;
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: repeat;
     height:600px;
     padding-top:50px;
     padding-left:50px;

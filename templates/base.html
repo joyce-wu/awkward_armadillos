@@ -13,56 +13,75 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
   {% endblock head %}
-    {% block navbar %}
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#463e3d;">
-      <div class="container-fluid">
-	<div class="navbar-header">
-          <a class="navbar-brand" href="/">Filmadillo</a>
-	  <span class="glyphicon glyphicon-film"></span>
-	</div>
-	 <form class="navbar-form navbar-left" action="/search" method="GET,POST">
+  
+  {% block navbar %}
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#463e3d;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Filmadillo</a>
+	<span class="glyphicon glyphicon-film"></span>
+      </div>
+      <form class="navbar-form navbar-left" action="/search" method="GET,POST">
         <div class="form-group">
           <input type="text" class="form-control" name="title" placeholder="Enter Movie Here">
         </div>
         <button type="submit" class="btn btn-default">Search</button>
       </form>
-	<ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right">
       	{% block icons %}
         {% if loggedIn %}
-         <li><a href="/logout"><span class="glyphicon glyphicon-log-out" style="padding-top:0px;"></span> Log Out</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out" style="padding-top:0px;"></span> Log Out</a></li>
         {% else %}
-          <li><a href="/signup"><span class="glyphicon glyphicon-user" style="padding-top:0px;"></span> Sign Up</a></li>
-          <li><a href="/login"><span class="glyphicon glyphicon-log-in" style="padding-top:0px;"></span> Log In</a></li>
+        <li><a href="/signup"><span class="glyphicon glyphicon-user" style="padding-top:0px;"></span> Sign Up</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in" style="padding-top:0px;"></span> Log In</a></li>
         {% endif %}
         {% endblock icons %}
-	</ul>
-      </div>
-    </nav>
-    {% endblock navbar %}
-    
-    {% block body %}
+      </ul>
+    </div>
+  </nav>
+  {% endblock navbar %}
+  
+  {% block body %}
   <body>
     <center>
       {# Display flashed messages #}
       {% set messages = get_flashed_messages() %}
-
       {% for msg in messages %}
       <h1>{{msg}}</h1>
       {% endfor %}
     </center>
     {% block content %}
-    <div class = "jumbotron">
+    <div class = "jumbotron" >
       <h1 style="color:white"> A Match Made In Heaven.</h1>
       <br><br><br>
       <p class = "large">
 	I'm a monster. He'll want to use your yacht, and I don't want this thing smelling like fish. There's only one man I've ever called a coward, and that's Brian Doyle Murray. No, what I'm calling you is a television actor.<br>
 
-No, I did not kill Kitty. However, I am going to oblige and answer the nice officer's questions because I am an honest man with no secrets to hide. Army had half a day. I don't understand the question, and I won't respond to it.<br>
+	No, I did not kill Kitty. However, I am going to oblige and answer the nice officer's questions because I am an honest man with no secrets to hide. Army had half a day. I don't understand the question, and I won't respond to it.<br>
 
-No! I was ashamed to be SEEN with you. I like being with you. Get me a vodka rocks. And a piece of toast. Whoa, this guy's straight?<br>
+	No! I was ashamed to be SEEN with you. I like being with you. Get me a vodka rocks. And a piece of toast. Whoa, this guy's straight?<br>
       </p>
+    
+    
+
+    <div class = "page-header" style="text-align:center">
+      <h1 style="color:black"> Recommended Movies: </h5>
     </div>
-    {% endblock content %}
+    <div class = "container" style="align:left">
+ 
+      {% for i in movies %}
+      <form action = "/movie_review" method = 'POST' style="text-align:left">
+	<h3> {{ i[0].replace("_", " ") }} </h3>
+	<p> {{ i[2] }} </p>
+	<input type = "hidden" name = "title" value = {{ i[0] }}>
+	<input type = "hidden" name = "url" value = {{ i[1] }}>
+	<button type="submit" class="btn btn-info">More Info</button>
+	<br><br>
+      </form>
+      {% endfor %}
+      {% endblock content %}
+    </div>
+    </div>
   </body>
   {% endblock body %}
 </html>

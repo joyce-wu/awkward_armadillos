@@ -13,9 +13,10 @@ app.secret_key = os.urandom(32)
 
 @app.route("/")
 def start():
+    movie_list = nyt_process.search_results()
     if session.get('username'):
-        return render_template('base.html', loggedIn=True)
-    return render_template('base.html', loggedIn=False)
+        return render_template('base.html', title = "Home", movies = movie_list, loggedIn=True)
+    return render_template('base.html', title = "Home", movies = movie_list, loggedIn=False)
 
 # Login Authentication
 @app.route('/login', methods=['GET', 'POST'])
@@ -29,7 +30,7 @@ def authentication():
         return auth.login()
     # user didn't enter form
     else:
-        return render_template('login.html')
+        return render_template('login.html', title = "Login")
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -40,7 +41,7 @@ def crt_acct():
     elif request.form.get('signup'):
         return auth.signup()
     else:
-        return render_template('signup.html')
+        return render_template('signup.html', title = "Signup" )
 
 # Profile page - shows profile stats and (if time, allow them to change password)
 @app.route('/profile', methods=['GET', 'POST'])
@@ -49,7 +50,7 @@ def profile():
         flash("Not logged in")
         return redirect(url_for('authentication'))
     else:
-        return render_template('profile.html', user=session.get('username'), loggedIn=True)
+        return render_template('profile.html', title = "Profile" , user=session.get('username'), loggedIn=True)
 
 # Logging out
 @app.route('/logout', methods=['GET', 'POST'])
@@ -66,7 +67,7 @@ def search():
     movie_list = nyt_process.search_results(request.args["title"])
     if len(movie_list) == 0:
         return render_template("search.html", message = "No Results found.") 
-    return render_template("search.html", movies = movie_list)
+    return render_template("search.html", title = "Search", movies = movie_list)
 
 @app.route("/movie_review", methods=['POST', 'GET'])
 def get_movie():
