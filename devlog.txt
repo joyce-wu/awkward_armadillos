@@ -78,11 +78,6 @@ wuJ -- 2017-11-22 13:16:18
 -----------------------
 omdb finished, working on movie_review html file now
 
-<<<<<<< HEAD
-joyceW -- 2017-11-25 15:59:54
-finished movie review html, waiting for other app.py finalization to test out page
-
-=======
 ======================================================
 moiT -- 2017-11-20 13:21
 -----------------------
@@ -146,4 +141,8 @@ wangK -- 2017-11-24 23:11
 -----------------------
 Fixed page titles
 Added list recommended movies to homepage
->>>>>>> cbbd5782f71bb0d42ed33e44a1de86660f495e1b
+
+======================================================
+joyceW -- 2017-11-25 15:59:54
+-----------------------
+finished movie review html, waiting for other app.py finalization to test out page
