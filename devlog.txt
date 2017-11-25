@@ -70,3 +70,6 @@ Added db setup for accounts
 wuJ -- 2017-11-22 13:16:18
 omdb finished, working on movie_review html file now
 
+joyceW -- 2017-11-25 15:59:54
+finished movie review html, waiting for other app.py finalization to test out page
+
