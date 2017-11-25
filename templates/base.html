@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
+  {% block head %}
   <head>
-    <title>NYT Books</title>
+    <title>
+      {% block title%} {{title}} {% endblock title %}-|-&nbsp Filmadillo
+    </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style0.css') }}>
@@ -9,58 +12,76 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </head>
-  <body>
-    <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#463e3d;">
-      <div class="container-fluid">
-	<div class="navbar-header">
-          <a class="navbar-brand" href="#">NYT Books</a>
-	  <span class="glyphicon glyphicon-book"></span>
-          <!--<img src = "glyphicon glyphicon-book">-->
-	</div>
-	<div class="collapse navbar-collapse">
-	  <ul class="nav navbar-nav">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
-	      <ul class="dropdown-menu scrollable-menu">
-		{% for i in names %}
-		<li><a href={{"#"+i[1]}}>{{i[0]}}</a></li>
-		{% endfor %}
-	      </ul>
-            </li>
-	  </ul>
-	</div>
+  {% endblock head %}
+  
+  {% block navbar %}
+  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color:#463e3d;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">Filmadillo</a>
+	<span class="glyphicon glyphicon-film"></span>
       </div>
-    </nav>
-
-    <div class = "jumbotron">
-      <h1> Books from the New York Times. </h1>
+      <form class="navbar-form navbar-left" action="/search" method="GET,POST">
+        <div class="form-group">
+          <input type="text" class="form-control" name="title" placeholder="Enter Movie Here">
+        </div>
+        <button type="submit" class="btn btn-default">Search</button>
+      </form>
+      <ul class="nav navbar-nav navbar-right">
+      	{% block icons %}
+        {% if loggedIn %}
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out" style="padding-top:0px;"></span> Log Out</a></li>
+        {% else %}
+        <li><a href="/signup"><span class="glyphicon glyphicon-user" style="padding-top:0px;"></span> Sign Up</a></li>
+        <li><a href="/login"><span class="glyphicon glyphicon-log-in" style="padding-top:0px;"></span> Log In</a></li>
+        {% endif %}
+        {% endblock icons %}
+      </ul>
+    </div>
+  </nav>
+  {% endblock navbar %}
+  
+  {% block body %}
+  <body>
+    <center>
+      {# Display flashed messages #}
+      {% set messages = get_flashed_messages() %}
+      {% for msg in messages %}
+      <h1>{{msg}}</h1>
+      {% endfor %}
+    </center>
+    {% block content %}
+    <div class = "jumbotron" >
+      <h1 style="color:white"> A Match Made In Heaven.</h1>
       <br><br><br>
       <p class = "large">
-	Using the API provided by the New York Times, you now have access to the NYT Bestsellers List, as well as a simple to navigate platform to read reviews made by top critics in the field. All books on this site are complete with a short blurb, titles, and even an Amazon url, should you want to acquire it for your personal library.  
+	I'm a monster. He'll want to use your yacht, and I don't want this thing smelling like fish. There's only one man I've ever called a coward, and that's Brian Doyle Murray. No, what I'm calling you is a television actor.<br>
+
+	No, I did not kill Kitty. However, I am going to oblige and answer the nice officer's questions because I am an honest man with no secrets to hide. Army had half a day. I don't understand the question, and I won't respond to it.<br>
+
+	No! I was ashamed to be SEEN with you. I like being with you. Get me a vodka rocks. And a piece of toast. Whoa, this guy's straight?<br>
       </p>
+    
+    
+
+    <div class = "page-header" style="text-align:center">
+      <h1 style="color:black"> Recommended Movies: </h5>
     </div>
-    {% for i in names %}
-    <div class = "container" id = {{i[1]}}>
-      <h3> {{i[0]}} </h3>
-      <p>
-	{% if loop.index <= 1 %}
-	{% for item in dict%}
-	<b>{{item[0]["title"]}}</b> <br>
-	<i>{{item[0]["descr"]}}</i> <br>
-	Publisher: {{item[0]["publisher"]}}<br>
-	Rank: {{item[0]["rank"]}}<br>
-	<a href = {{item[0]["buy"]}}>Buy it here!</a><br>
-	{% if item[0]["reviews"] == NONE %}
-	There are no reviews at this time.
-	{% else %}
-	<a href = {{item[0]["reviews"]}}> Sunday Review </a>
-	{% endif %}
-	<br><br><br>
-	{% endfor %}
-	{% endif %}
-      </p>
-      <br> <br>
+    <div class = "container" style="align:left">
+ 
+      {% for i in movies %}
+      <form action = "/movie_review" method = 'POST' style="text-align:left">
+	<h3> {{ i[0].replace("_", " ") }} </h3>
+	<p> {{ i[2] }} </p>
+	<input type = "hidden" name = "title" value = {{ i[0] }}>
+	<input type = "hidden" name = "url" value = {{ i[1] }}>
+	<button type="submit" class="btn btn-info">More Info</button>
+	<br><br>
+      </form>
+      {% endfor %}
+      {% endblock content %}
     </div>
-    {% endfor %}
+    </div>
   </body>
+  {% endblock body %}
 </html>
