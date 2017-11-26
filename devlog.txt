@@ -175,4 +175,10 @@ Working on adding a personal collection of movies
     * history: user | title | plot | url
   * ISSUE: repeats in adding movies
   * Created a button on page to add movies
- 
+======================================================
+yuJ -- 2017-11-26 17:00
+-----------------------
+Personal collection of movies works
+  * Displayed on profile page
+  * Movies already associated with a user cannot be added
+  * 

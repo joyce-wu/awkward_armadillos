@@ -11,10 +11,14 @@
     <input type = "hidden" name = "title" value = {{ i[0] }}>
     <input type = "hidden" name = "url" value = {{ i[2] }}>
     <button type="submit" class="btn btn-info">More Info</button>
-    <br><br>
   </form>
+  <br><br>
+  <form action = "/profile" method = 'POST'>
+    <input type = "hidden" name = "movie" value = {{ i[0] }}>
+    <button type = "submit" class="btn btn-danger"> Remove</button>
+  </form>
+  <br>
   {% endfor %}
-<p>page in progress</p>
 </div>
 {% endblock content %}
 

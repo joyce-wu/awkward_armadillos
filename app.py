@@ -51,6 +51,10 @@ def profile():
         return redirect(url_for('authentication'))
     else:
         name = session.get('username')
+        if request.form.get('movie'):
+            print "\n\n\n" + request.form['movie'] + "\n\n\n"
+            database.remove(name, request.form['movie'])
+            flash("Yay! The movie was removed.")
         return render_template('profile.html', title = "Profile" , user=session.get('username'), loggedIn=True, movies=database.get_user_history(name))
 
 # Logging out

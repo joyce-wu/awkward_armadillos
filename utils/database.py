@@ -80,6 +80,13 @@ def check(user, movie):
     db.close()
     return True
 
+def remove(user, movie):
+    db = sqlite3.connect("data/filmadillo.db")
+    c = db.cursor()
+    #print "---------\n\n" +  + "\n\n-------------"
+    x = c.execute("DELETE FROM history WHERE user= ? AND movie = ?", [user, movie])
+    db.commit()
+    db.close()
 
 
 
