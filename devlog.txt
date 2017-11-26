@@ -146,3 +146,8 @@ Added list recommended movies to homepage
 joyceW -- 2017-11-25 15:59:54
 -----------------------
 finished movie review html, waiting for other app.py finalization to test out page
+
+======================================================
+moiT -- 2017-11-25 15:59:54
+-----------------------
+Added color coded alerts for different flash messages
