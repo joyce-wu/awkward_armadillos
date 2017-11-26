@@ -22,15 +22,18 @@ def scrape(url):
     for num in range (0, len(results)):
         match = results[num]
         
-        if "<a href" in lxml.html.tostring(match):
-            index1 = lxml.html.tostring(match).index('<a href')
+        #if there are links in the result, it won't scrape properly.
+        if "href=" in lxml.html.tostring(match):
+            index1 = lxml.html.tostring(match).index('<a href=')
             print index1
             print lxml.html.tostring(match)[0:index1]
             index2 = lxml.html.tostring(match).index('</a>')
             print index2
             print lxml.html.tostring(match)[index2:-1]
-            print "HELLLLLLLLLLOOOOOOOOOOOOOO"
-            result = lxml.html.tostring(match)[0:index1] + lxml.html.tostring(match)[index2:-1]
+            a = lxml.html.tostring(match)[index1+1:index2+1].index('>')
+            b = lxml.html.tostring(match)[index1+1:index2+1].index('<')
+            #stuff before the link + stuff inside the link + stuff after the link
+            result = lxml.html.tostring(match)[0:index1] + lxml.html.tostring(match)[index1+2:index2][a:b] + lxml.html.tostring(match)[index2:-1]
             results[num] = lxml.html.fromstring(result)
             print result
             
