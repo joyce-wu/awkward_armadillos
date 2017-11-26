@@ -181,4 +181,8 @@ yuJ -- 2017-11-26 17:00
 Personal collection of movies works
   * Displayed on profile page
   * Movies already associated with a user cannot be added
-  * 
+Link on profile takes you to movie page as well
+======================================================
+yuJ -- 2017-11-26 17:37
+-----------------------
+Able to remove movies on list
