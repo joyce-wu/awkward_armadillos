@@ -151,3 +151,16 @@ finished movie review html, waiting for other app.py finalization to test out pa
 moiT -- 2017-11-25 15:59:54
 -----------------------
 Added color coded alerts for different flash messages
+
+======================================================
+wangK -- 2017-11-25 23:59
+-----------------------
+Front end stuff for movie review page
+Fix movie review displaying weird stuff
+Started working on fixing scrape method
+
+======================================================
+wangK -- 2017-11-26 13:40
+-----------------------
+Fixed scrape method! Now it works when there's a link in the paragraph
+But it doesn't work when theres multiple links (yet)
