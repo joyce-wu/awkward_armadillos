@@ -1,15 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 <div class = "container" style="align:left">
-   <h1>{{title}}</h1>
-   <p>Release Year: {{year}}</p>
-   <p>Genre: {{genre}}</p>
-   <p>Plot: {{plot}}</p>
-   <img src = {{pic}}></img>
-   <h2>Review</h2>
-   {% for block in review %}
-   <p>{{block}}</p>
-   {% endfor %}
- </div>
+  <div class="media">
+    
+    <div class="media-body">
+      <font size="4">
+	<h1 class="media-heading">{{title}}</h1>
+	<p><b> Release Year: </b> {{year}} </p>
+	<p><b> Genre: </b>{{genre}}</p>
+	<p><b> Plot:</b> {{plot}}</p>
+	<h2>Review</h2>
+	{% for block in review %}
+	
+	{% if block != "Advertisement" and block != None %}
+	<p class ="text-justify">{{block}}</p>
+	{% endif %}
+	
+	{% endfor %}
+      </font>
+    </div>
+    
+   <div class="media-right">
+      <img src={{pic}} class="media-object" style="width:300px">
+    </div>    
+
+  </div>
+</div>
+
 
 {% endblock content %}
