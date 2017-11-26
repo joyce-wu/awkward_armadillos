@@ -12,7 +12,7 @@
 	<h2>Review</h2>
 	{% for block in review %}
 	
-	{% if block != "Advertisement" and block != None %}
+	{% if block != "Advertisement" and block != None and block != "Over " and block != "A preview of the film." %}
 	<p class ="text-justify">{{block}}</p>
 	{% endif %}
 	
