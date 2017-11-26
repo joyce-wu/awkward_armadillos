@@ -66,6 +66,19 @@ def add(user, movie, plot, url):
     db.commit()
     db.close()
 
+def check(user, movie):
+    db = sqlite3.connect("data/filmadillo.db")
+    c = db.cursor()
+    #print "---------\n\n" +  + "\n\n-------------"
+    x = c.execute("SELECT movie FROM history WHERE user= ?", [user])
+    print x
+    for line in x:
+        print line
+        if movie == line[0]:
+            db.close()
+            return False
+    db.close()
+    return True
 
 
 

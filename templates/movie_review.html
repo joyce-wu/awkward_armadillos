@@ -24,13 +24,15 @@
    <div class="media-right">
      <img src={{pic}} class="media-object" style="width:300px;padding:15px">
      <br><br>
-     <form action = "/movie_review" method = 'POST'>
+     {% if new %}
+     <form action = "/movie_review" style="padding:15px" method = 'POST'>
        <input type = "hidden" name="movie" value="filler">
        <input type = "hidden" name="title" value ={{title.replace(" ", "_")}}>
        <input type = "hidden" name="plot" value ={{plot.replace(" ", "_")}}>
        <input type = "hidden" name="url" value ={{url}}>
        <button type="submit" class="btn btn-info" style="padding:15px">Add to your list</button>
      </form>
+     {% endif %}
     </div>    
 
   </div>
