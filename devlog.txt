@@ -164,3 +164,15 @@ wangK -- 2017-11-26 13:40
 -----------------------
 Fixed scrape method! Now it works when there's a link in the paragraph
 But it doesn't work when theres multiple links (yet)
+======================================================
+yuJ -- 2017-11-26 15:50
+-----------------------
+Fixed navbar: Login/Signup only show up when not logged in
+Beginnings of profile page (with listed movies)
+Working on adding a personal collection of movies
+  * Redid database schema
+    * users: user | pass
+    * history: user | title | plot | url
+  * ISSUE: repeats in adding movies
+  * Created a button on page to add movies
+ 
