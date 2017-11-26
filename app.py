@@ -56,9 +56,9 @@ def profile():
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     if not session.get('username'):
-        flash("Not logged in")
+        flash("Yikes! You're not logged in")
     else:
-        flash("Logged out")
+        flash("Yay! You've successfully logged out")
         session.pop('username')
         return redirect(url_for('authentication'))
 

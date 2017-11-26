@@ -13,10 +13,10 @@ def login():
             session['username'] = request.form.get('username')
             return redirect(url_for('profile'))
         else:
-            flash("Bad password")
+            flash("Yikes! Bad password")
             return redirect(url_for('authentication'))
     else:
-        flash("Bad username")
+        flash("Yikes! Bad username")
         return redirect(url_for('authentication'))
 
 
@@ -25,11 +25,11 @@ def signup():
     users = database.getUsers()
     # checks if credentials for flash message
     if request.form.get('username') in users:
-        flash("Username already taken")
+        flash("Yikes! Username already taken")
     elif request.form.get('password0') != request.form.get('password1'):
-        flash("Passwords do not match")
+        flash("Yikes! Passwords do not match")
     else:
-        flash("Please log in with your new credentials!")
+        flash("Yay! Please log in with your new credentials!")
         database.addUser(request.form.get('username'), request.form.get('password0'))
     return redirect(url_for('authentication'))
 
