@@ -1,9 +1,20 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class ="jumbotron">
-  <h1> HELLO </h1>
-  </div>
+<div class="container">
+<h1> Welcome, {{user}} ! </h1> <br>
+<h1> Your Movies </h1>
+  {% for i in movies %}
+  <form action = "/movie_review" method = 'POST' style="text-align:left">
+    <h3> {{ i[0].replace("_", " ") }} </h3>
+    <p> {{ i[1].replace("_", " ") }} </p>
+    <input type = "hidden" name = "title" value = {{ i[0] }}>
+    <input type = "hidden" name = "url" value = {{ i[2] }}>
+    <button type="submit" class="btn btn-info">More Info</button>
+    <br><br>
+  </form>
+  {% endfor %}
 <p>page in progress</p>
+</div>
 {% endblock content %}
 

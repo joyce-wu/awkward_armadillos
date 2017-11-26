@@ -8,6 +8,7 @@
 	<h1 class="media-heading">{{title}}</h1>
 	<p><b> Release Year: </b> {{year}} </p>
 	<p><b> Genre: </b>{{genre}}</p>
+	<p><b> Directed by: </b> {{director}} </p>
 	<p><b> Plot:</b> {{plot}}</p>
 	<h2>Review</h2>
 	{% for block in review %}
@@ -21,7 +22,15 @@
     </div>
     
    <div class="media-right">
-      <img src={{pic}} class="media-object" style="width:300px">
+     <img src={{pic}} class="media-object" style="width:300px;padding:15px">
+     <br><br>
+     <form action = "/movie_review" method = 'POST'>
+       <input type = "hidden" name="movie" value="filler">
+       <input type = "hidden" name="title" value ={{title.replace(" ", "_")}}>
+       <input type = "hidden" name="plot" value ={{plot.replace(" ", "_")}}>
+       <input type = "hidden" name="url" value ={{url}}>
+       <button type="submit" class="btn btn-info" style="padding:15px">Add to your list</button>
+     </form>
     </div>    
 
   </div>

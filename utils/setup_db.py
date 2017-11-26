@@ -1,12 +1,12 @@
 import sqlite3
 
-f = "accounts.db"
+f = "filmadillo.db"
 
 db = sqlite3.connect(f) #open if f exists, otherwise create
 c = db.cursor()    #facilitate db ops
 
-command = "CREATE TABLE accounts(username TEXT PRIMARY KEY, password TEXT);"
-c.execute(command)    #run SQL statement
+c.execute("CREATE TABLE users (user TEXT, pass TEXT, PRIMARY KEY(user))")
+c.execute("CREATE TABLE history (user TEXT, movie TEXT, plot TEXT, url TEXT)")
 
 db.commit() #save changes
 

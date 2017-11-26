@@ -5,7 +5,7 @@ Kelly Wang, Tiffany Moi, Joyce Wu, Jen Yu
 '''
 import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
-from utils import nyt_process, omdb_process, auth
+from utils import nyt_process, omdb_process, auth, database
 import urllib2, json
 
 app = Flask(__name__)
@@ -50,7 +50,8 @@ def profile():
         flash("Not logged in")
         return redirect(url_for('authentication'))
     else:
-        return render_template('profile.html', title = "Profile" , user=session.get('username'), loggedIn=True)
+        name = session.get('username')
+        return render_template('profile.html', title = "Profile" , user=session.get('username'), loggedIn=True, movies=database.get_user_history(name))
 
 # Logging out
 @app.route('/logout', methods=['GET', 'POST'])
@@ -64,13 +65,28 @@ def logout():
 
 @app.route("/search", methods=['POST', 'GET'])
 def search():
+    if session.get('username'):
+        login = True
+    else:
+        login = False
     movie_list = nyt_process.search_results(request.args["title"])
     if len(movie_list) == 0:
-        return render_template("search.html", message = "No Results found.") 
-    return render_template("search.html", title = "Search", movies = movie_list)
+        return render_template("search.html", message = "No Results found.", loggedIn=login) 
+    return render_template("search.html", title = "Search", movies = movie_list, loggedIn = login)
 
 @app.route("/movie_review", methods=['POST', 'GET'])
 def get_movie():
+    if session.get('username'):
+        login = True
+    else:
+        login = False
+    if login and request.form.get('movie'):
+        print "\n\nwe made it\n\n"
+        print request.form['title']
+        print request.form['plot']
+        print request.form["url"]
+        database.add(session.get('username'), request.form['title'], request.form['plot'], request.form["url"])
+        flash("Added movie to personal list.")
     movie = request.form['title'] #refer back for variable_names
     movie = movie.split("\n")
     url = request.form['url']
@@ -78,9 +94,9 @@ def get_movie():
     review = nyt_process.get_review(url[0])
     try:
         info = omdb_process.get_info(movie[0])
-        return render_template("movie_review.html", title=movie[0].replace("_", " "), director=info["Director"], year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review)
+        return render_template("movie_review.html", title=movie[0].replace("_", " "), director=info["Director"], year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review, loggedIn=login, url=url[0])
     except:
-        return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=review)
+        return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=review, loggedIn=login, url=url[0])
 
 if __name__ == "__main__":
     app.debug = True

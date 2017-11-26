@@ -41,11 +41,13 @@ def get_info(query):
 def get_movie_data(query):
     q = nyt.get_title(query)
     for name in q:
-        print name
+        #print name
         d = access_url(name)
+        '''
         for key in d:
             print key
             print d[key]
+        '''
     return d
 
 #def get_

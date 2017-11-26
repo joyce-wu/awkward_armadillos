@@ -9,6 +9,8 @@ if __name__ == '__main__':
     c = db.cursor()
     # table for user login
     c.execute("CREATE TABLE users (user TEXT, pass TEXT, PRIMARY KEY(user))")
+    #table with all saved movies
+    c.execute("CREATE TABLE history (user TEXT, movie TEXT, PRIMARY KEY(user))")
     # save and close database
     db.commit()
     db.close()
@@ -40,6 +42,30 @@ def addUser(user, password):
     db.close()
 
 # --------------------------------------------------
+
+
+#----------------FUNCTIONS FOR USERS----------------
+
+def get_user_history(user):
+    db = sqlite3.connect("data/filmadillo.db")
+    c = db.cursor()
+    #print "---------\n\n" +  + "\n\n-------------"
+    x = c.execute("SELECT movie, plot, url FROM history WHERE user= ?", [user])
+    movies = []
+    for line in x:
+        movies.append(line)
+    db.close()
+    return movies
+
+def add(user, movie, plot, url):
+    db = sqlite3.connect("data/filmadillo.db")
+    c = db.cursor()
+    vals = [user, movie, plot, url]
+    x = c.execute("INSERT INTO history VALUES(?, ?, ?, ?)", vals)
+    print"\n\nhere\n\n"
+    db.commit()
+    db.close()
+
 
 
 
