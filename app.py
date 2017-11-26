@@ -64,20 +64,6 @@ def logout():
 
 @app.route("/search", methods=['POST', 'GET'])
 def search():
-<<<<<<< HEAD
-
-    movie_list = nyt_process.get_title(request.form["title"])
-    print movie_list
-    movies = nyt_process.get_title(movie_list)
-    return render_template("all_movies.html", movies = movies)
-
-@app.route("/movie_review", methods=['POST', 'GET'])
-def get_movie():
-    movie = "the silence of the lambs"#request.get("movie_val") #refer back for variable_names
-    info = omdb_process.get_info(movie)
-    review = nyt_process.get_review(movie)
-    return render_template("movie_review.html", director=info["Director"], title=info["Title"], year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review)
-=======
     movie_list = nyt_process.search_results(request.args["title"])
     if len(movie_list) == 0:
         return render_template("search.html", message = "No Results found.") 
@@ -92,10 +78,9 @@ def get_movie():
     review = nyt_process.get_review(url[0])
     try:
         info = omdb_process.get_info(movie[0])
-        return render_template("movie_review.html", title=movie[0].replace("_", " "), year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review)
+        return render_template("movie_review.html", title=movie[0].replace("_", " "), director=info["Director"], year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review)
     except:
         return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=review)
->>>>>>> cbbd5782f71bb0d42ed33e44a1de86660f495e1b
 
 if __name__ == "__main__":
     app.debug = True
