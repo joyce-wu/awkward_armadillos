@@ -14,7 +14,7 @@ body
 .large
 {
     background-color:white;
-    filter: alpha(opacity=90);    
+    filter: alpha(opacity=90);
     opacity: .8;
     padding:30px;
     width:900px;
@@ -27,7 +27,7 @@ body
 
 .jumbotron
 {
-    background-image:url(../static/movies.jpg);
+    background-image:url(film.jpg);
     background-position: 0% 25%;
     background-size: cover;
     background-repeat: repeat;
