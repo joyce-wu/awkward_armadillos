@@ -89,16 +89,20 @@ def get_movie():
         flash("Yay! This movie was added to your personal list.")
     if not login and request.form.get('movie'):
         flash("Yikes! You need to log in before adding movies.")
-    movie = request.form['title'] #refer back for variable_names
-    movie = movie.split("\n")
-    url = request.form['url']
-    url = url.split("\n")
-    review = nyt_process.get_review(url[0])
+    try:
+        movie = request.form['title'] #refer back for variable_names
+        movie = movie.split("\n")
+        url = request.form['url']
+        url = url.split("\n")
+        review = nyt_process.get_review(url[0])
+    except:
+        flash("Yikes! You need to find a movie first!")
+        return redirect(url_for("start"))
     try:
         info = omdb_process.get_info(movie[0])
         return render_template("movie_review.html", title=movie[0].replace("_", " "), director=info["Director"], year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review, loggedIn=login, url=url[0], new=database.check(session.get('username'), movie[0]))
     except:
-        return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=review, loggedIn=login, url=url[0], new=database.check(session.get('username'), movie[0]))
+        return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=review, loggedIn=login, url=url[0], director = "N/A",new=database.check(session.get('username'), movie[0]))
 
 if __name__ == "__main__":
     app.debug = True
