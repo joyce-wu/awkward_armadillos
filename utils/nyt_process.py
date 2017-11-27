@@ -96,6 +96,3 @@ def get_review(url):
         except:
             print "No review found"
     '''
-
-
-
