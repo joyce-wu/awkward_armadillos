@@ -1,6 +1,6 @@
 import sqlite3
 
-f = "filmadillo.db"
+f = "../data/filmadillo.db"
 
 db = sqlite3.connect(f) #open if f exists, otherwise create
 c = db.cursor()    #facilitate db ops

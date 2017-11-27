@@ -164,6 +164,7 @@ wangK -- 2017-11-26 13:40
 -----------------------
 Fixed scrape method! Now it works when there's a link in the paragraph
 But it doesn't work when theres multiple links (yet)
+
 ======================================================
 yuJ -- 2017-11-26 15:50
 -----------------------
@@ -175,6 +176,7 @@ Working on adding a personal collection of movies
     * history: user | title | plot | url
   * ISSUE: repeats in adding movies
   * Created a button on page to add movies
+  
 ======================================================
 yuJ -- 2017-11-26 17:00
 -----------------------
@@ -182,7 +184,14 @@ Personal collection of movies works
   * Displayed on profile page
   * Movies already associated with a user cannot be added
 Link on profile takes you to movie page as well
+
 ======================================================
 yuJ -- 2017-11-26 17:37
 -----------------------
 Able to remove movies on list
+
+======================================================
+moiT -- 2017-11-26 20:34
+-----------------------
+Passwords are hashed
+

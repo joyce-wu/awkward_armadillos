@@ -1,5 +1,5 @@
 from flask import redirect, url_for, request, session, flash
-import database
+import database, hashlib
 
 # scrits for logging in
 
@@ -9,7 +9,9 @@ def login():
     users = database.getUsers()
     # checks credentials for login
     if request.form.get('username') in users:
-        if request.form.get('password') == users[request.form.get('username')]:
+        hash_object = hashlib.sha224(request.form.get('password'))
+        hashed_pass = hash_object.hexdigest()
+        if hashed_pass == users[request.form.get('username')]:
             session['username'] = request.form.get('username')
             return redirect(url_for('profile'))
         else:
@@ -26,12 +28,16 @@ def signup():
     # checks if credentials for flash message
     if request.form.get('username') in users:
         flash("Yikes! Username already taken")
+        return redirect(url_for('crt_acct'))              
     elif request.form.get('password0') != request.form.get('password1'):
         flash("Yikes! Passwords do not match")
+        return redirect(url_for('crt_acct'))
     else:
         flash("Yay! Please log in with your new credentials!")
-        database.addUser(request.form.get('username'), request.form.get('password0'))
-    return redirect(url_for('authentication'))
+        hash_object = hashlib.sha224(request.form.get('password0'))
+        hashed_pass = hash_object.hexdigest()
+        database.addUser(request.form.get('username'), hashed_pass)
+        return redirect(url_for('authentication'))
 
 
 if __name__ == '__main__':
