@@ -27,11 +27,11 @@ body
 
 .jumbotron
 {
-    background-image:url(film.jpg);
+    background-image:url(../static/film.jpg);
     background-position: 0% 25%;
     background-size: cover;
     background-repeat: repeat;
-    height:600px;
+    height:450px;
     padding-top:50px;
     padding-left:50px;
 }

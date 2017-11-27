@@ -7,7 +7,7 @@
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style0.css') }}>
+    <link rel="stylesheet" href="../static/style0.css">
     <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -59,14 +59,14 @@
     {% endfor %}
     {% block content %}
     <div class = "jumbotron" >
-      <h1 style="color:white"> Welcome!</h1>
-      <br><br><br>
+      <h1 style="color:black"> Welcome!</h1>
+      <br>
       <p class = "large">
 	       Search. <br>
          Add. <br>
          Watch. <br>
          Get reviews from top critics and information about any movie you want! Using the NYTimes and OMDb apis,
-         users can search and save any movies they're interested in. 
+         users can search and save any movies they're interested in.
       </p>
 
 
@@ -82,7 +82,7 @@
 	  <input type = "hidden" name = "title" value = {{ i[0] }}>
 	  <input type = "hidden" name = "url" value = {{ i[1] }}>
 	  <button type="submit" class="btn btn-info">More Info</button>
-	  <br><br>
+	  <br><hr>
 	</form>
 	{% endfor %}
 	{% endblock content %}

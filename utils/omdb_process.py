@@ -3,6 +3,7 @@ import nyt_process as nyt
 
 omdb_base="http://www.omdbapi.com/?apikey="
 
+#retrieves key from key.txt
 f = open("key.txt", "r")
 txt = f.read()
 key = txt.split('\n')[1]
@@ -10,6 +11,7 @@ key = txt.split('\n')[1]
 #Keep track of how often this function is called!
 #DON'T go over quotas!!
 
+#access url with api key
 def access_url(query):
     acc = omdb_base + key
     if (query == ""):
@@ -24,11 +26,12 @@ def access_url(query):
            d = json.loads(data.read())
            return d
        except:
-           print "your key is wrong or you have reached your monthy quota1"
+           print "your key is wrong or you have reached your monthy quota!"
 
+#retrieves information from movies using the OMDb api
 def get_info(query):
     d = access_url(query)
-    info = {}
+    info = {} #creates dictionary of information needed
     info["Title"] = d["Title"]
     info["Year"] = d["Year"]
     info["Genre"] = d["Genre"]
@@ -50,7 +53,5 @@ def get_movie_data(query):
         '''
     return d
 
-#def get_
-
-#print
-print get_info('silence of the lambs')
+#testing
+#print get_info('silence of the lambs')
