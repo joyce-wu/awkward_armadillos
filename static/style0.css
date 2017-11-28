@@ -46,11 +46,6 @@ body
     font-family: 'Ubuntu', sans-serif;
 }
 
-h3
-{
-    text-shadow: 3px 3px 3px #aaa;
-}
-
 ul.nav-pills {
     top: 20px;
     position: fixed;

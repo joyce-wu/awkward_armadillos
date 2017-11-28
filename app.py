@@ -23,6 +23,7 @@ def start():
 def authentication():
     # if user already logged in, redirect to homepage(base.html)
     if session.get('username'):
+        flash("Yikes! You're already signed in.")
         return redirect('profile')
     # user entered login form
     elif request.form.get('login'):
@@ -36,7 +37,8 @@ def authentication():
 @app.route('/signup', methods=['GET', 'POST'])
 def crt_acct():
     if session.get('username'):
-        return redirect('base')
+        flash("Yikes! You're already signed in.")
+        return redirect('profile')
     # user entered signup form
     elif request.form.get('signup'):
         return auth.signup()
@@ -47,7 +49,7 @@ def crt_acct():
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     if not session.get('username'):
-        flash("Not logged in")
+        flash("Yikes! You need to log in first.")
         return redirect(url_for('authentication'))
     else:
         name = session.get('username')
@@ -73,10 +75,14 @@ def search():
         login = True
     else:
         login = False
-    movie_list = nyt_process.search_results(request.args["title"])
-    if len(movie_list) == 0:
-        return render_template("search.html", message = "No Results found.", loggedIn=login) 
-    return render_template("search.html", title = "Search", movies = movie_list, loggedIn = login)
+    try: 
+        movie_list = nyt_process.search_results(request.args["title"])
+        if len(movie_list) == 0:
+            return render_template("search.html", message = "No Results found.", loggedIn=login) 
+        return render_template("search.html", title = "Search", movies = movie_list, loggedIn = login)
+    except:
+        flash("Yikes! You need to search for a movie first!")
+        return redirect(url_for("start"))
 
 @app.route("/movie_review", methods=['POST', 'GET'])
 def get_movie():
