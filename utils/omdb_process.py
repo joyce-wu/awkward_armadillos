@@ -11,7 +11,13 @@ key = txt.split('\n')[1]
 #Keep track of how often this function is called!
 #DON'T go over quotas!!
 
-#access url with api key
+'''
+access_url(query) - Function to pull data from the OMDB API
+ * query parameter is used to access specific information in API
+ * used to access a movie that the user already searched for
+ * and subsequently, to pull information about that movie
+KEEP TRACK OF HOW OFTEN THIS FXN IS CALL TO NOT GO OVER QUOTAS.
+'''
 def access_url(query):
     acc = omdb_base + key
     if (query == ""):
@@ -28,7 +34,12 @@ def access_url(query):
        except:
            print "your key is wrong or you have reached your monthy quota!"
 
-#retrieves information from movies using the OMDb api
+'''
+get_info(query) - Function to pull data from the OMDB API
+ * query parameter is used to access information about a specific movie in API
+ * used after the user selects a movie to view info about
+ * returns a dictionary of all information extracted from OMDB API
+'''
 def get_info(query):
     d = access_url(query)
     info = {} #creates dictionary of information needed
@@ -40,18 +51,14 @@ def get_info(query):
     info["Director"] = d["Director"]
     return info
 
-#Wrapper for OMDB search function
+'''
 def get_movie_data(query):
     q = nyt.get_title(query)
     for name in q:
         #print name
         d = access_url(name)
-        '''
-        for key in d:
-            print key
-            print d[key]
-        '''
     return d
+'''
 
 #testing
 #print get_info('silence of the lambs')
