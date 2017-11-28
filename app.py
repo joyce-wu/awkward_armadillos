@@ -75,10 +75,10 @@ def search():
         login = True
     else:
         login = False
-    try: 
+    try:
         movie_list = nyt_process.search_results(request.args["title"])
         if len(movie_list) == 0:
-            return render_template("search.html", message = "No Results found.", loggedIn=login) 
+            return render_template("search.html", message = "No Results found.", loggedIn=login)
         return render_template("search.html", title = "Search", movies = movie_list, loggedIn = login)
     except:
         flash("Yikes! You need to search for a movie first!")
@@ -108,6 +108,8 @@ def get_movie():
         info = omdb_process.get_info(movie[0])
         return render_template("movie_review.html", title=movie[0].replace("_", " "), director=info["Director"], year=info["Year"], genre=info["Genre"], plot=info["Plot"], pic=info["Poster"], review=review, loggedIn=login, url=url[0], new=database.check(session.get('username'), movie[0]))
     except:
+        if(review == None):
+            return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=["There is no review for this movie."], loggedIn=login, url=url[0], director = "N/A",new=database.check(session.get('username'), movie[0]))
         return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=review, loggedIn=login, url=url[0], director = "N/A",new=database.check(session.get('username'), movie[0]))
 
 if __name__ == "__main__":
