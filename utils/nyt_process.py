@@ -60,7 +60,8 @@ def search_results(query=""):
             title = a["display_title"].replace(" ", "_")
             l.append(title)
             l.append(a["link"]["url"])
-            l.append(a["summary_short"])
+            print scraper.convert(a["summary_short"])
+            l.append(scraper.convert(a["summary_short"]))
             #append sublist to main result list
             results.append(l)
             l = []
