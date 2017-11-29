@@ -215,7 +215,12 @@ moiT -- 2017-11-28 13:22
 -----------------------
 Fixed issue with links in review - now shows all text
 Fixed weird HTML decimal characters - now in unicode
-
+======================================================
+yuJ -- 2017-11-28 13:12
+-----------------------
+Fixed paths for: movie_review, search, login, signup
+  * Instead of error page, redirect to another path
+Stress test
 ======================================================
 wangK -- 2017-11-28 20:30
 -----------------------
@@ -226,3 +231,7 @@ Lots of broken things! But patched them all up
 *Weird search results( "N O  R E S U L T S .") fixed
 *New API keys activated and working
 ======================================================
+yuJ -- 2017-11-29 00:47
+-----------------------
+Stress testttt (on me or the project?? The age old question.)
+Added comments, removed prints, cleanup
