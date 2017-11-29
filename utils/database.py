@@ -1,9 +1,6 @@
 import sqlite3
 from flask import request, flash
 
-# only has login functionality so far
-
-# execute this file to create the initial database
 if __name__ == '__main__':
     # initialize database
     db = sqlite3.connect("data/filmadillo.db")
@@ -50,7 +47,6 @@ def addUser(user, password):
 def get_user_history(user):
     db = sqlite3.connect("data/filmadillo.db")
     c = db.cursor()
-    #print "---------\n\n" +  + "\n\n-------------"
     x = c.execute("SELECT movie, plot, url FROM history WHERE user= ?", [user])
     movies = []
     for line in x:
@@ -66,9 +62,6 @@ def add(user, movie, plot, url):
     #hass the movie already saved?
     if check(user, movie) == True:
         x = c.execute("INSERT INTO history VALUES(?, ?, ?, ?)", vals)
-    else:
-        print "nooooooo"
-    print"\n\nhere\n\n"
     db.commit()
     db.close()
 
@@ -77,7 +70,6 @@ def add(user, movie, plot, url):
 def check(user, movie):
     db = sqlite3.connect("data/filmadillo.db")
     c = db.cursor()
-    #print "---------\n\n" +  + "\n\n-------------"
     x = c.execute("SELECT movie FROM history WHERE user= ?", [user])
     print x
     for line in x:
@@ -92,10 +84,9 @@ def check(user, movie):
 def remove(user, movie):
     db = sqlite3.connect("data/filmadillo.db")
     c = db.cursor()
-    #print "---------\n\n" +  + "\n\n-------------"
     x = c.execute("DELETE FROM history WHERE user= ? AND movie = ?", [user, movie])
     db.commit()
     db.close()
 
-
+#print "---------\n\n" +  + "\n\n-------------"
 

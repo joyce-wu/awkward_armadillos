@@ -74,31 +74,13 @@ def search_results(query=""):
     
 
 '''
-get_review(query): Uses data scraping to retrieve the text of review on the NYT API matching a certain search criteria (query). 
+get_review(query): Uses data scraping to retrieve the text of review in url. 
  * Used when movie is clicked on within the search results/homepage.
- * Based on full movie name, gets reviews from site.
-- Jen: rethinking this, we probably want to get the review url in the search, and then scrape that later when the user clicks the link...
+ * Gets the text from the url provided in API
 '''
 def get_review(url):
     try:
         return scraper.scrape(url)
     except:
         print "No Review."
-    '''
-    if query =="":
-        print "No movie title given."
-    else:
-        try:
-            d = access_url(query)
-            links = []
-            reviews=[]
-            for each in d['results']:
-                links.append(each['link']['url'])
-            for link in links:
-                reviews.append(scraper.scrape(link))
-            return reviews
-        except:
-            print "No review found"
-    '''
 
-#print search_results()

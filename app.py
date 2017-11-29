@@ -10,8 +10,10 @@ from utils import nyt_process, omdb_process, auth, database
 import urllib2, json
 
 app = Flask(__name__)
+#for sessions
 app.secret_key = os.urandom(32)
 
+#base 
 @app.route("/")
 def start():
     # search_results with no query returns list of recommended movies
@@ -21,7 +23,7 @@ def start():
         return render_template('base.html', title = "Home", movies = movie_list, loggedIn=True)
     return render_template('base.html', title = "Home", movies = movie_list, loggedIn=False)
 
-# Login Authentication
+#login authentication
 @app.route('/login', methods=['GET', 'POST'])
 def authentication():
     # if user already logged in, redirect to homepage(base.html)
@@ -36,7 +38,7 @@ def authentication():
     else:
         return render_template('login.html', title = "Login")
 
-# signup
+#signup
 @app.route('/signup', methods=['GET', 'POST'])
 def crt_acct():
     # user already logged in
@@ -49,7 +51,7 @@ def crt_acct():
     else:
         return render_template('signup.html', title = "Signup" )
 
-# Profile page - shows profile stats and (if time, allow them to change password)
+#profile - shows personal list of movies
 @app.route('/profile', methods=['GET', 'POST'])
 def profile():
     # must be logged in to view user profile!
@@ -67,7 +69,7 @@ def profile():
             flash("Yay! The movie was removed.")
         return render_template('profile.html', title = "Profile" , user=session.get('username'), loggedIn=True, movies=database.get_user_history(name))
 
-# Logging out
+#logout
 @app.route('/logout', methods=['GET', 'POST'])
 def logout():
     if not session.get('username'):
@@ -78,7 +80,7 @@ def logout():
         session.pop('username')
         return redirect(url_for('authentication'))
 
-# Search - displays list of movies, their short summaries, and options to view more info abt each movie
+#search - displays list of movies, their short summaries, and options to view more info abt each movie
 @app.route("/search", methods=['POST', 'GET'])
 def search():
     if session.get('username'):
@@ -97,7 +99,8 @@ def search():
         flash("Yikes! You need to search for a movie first!")
         return redirect(url_for("start"))
 
-# display information about the movie that the user selected
+#display information about the movie that the user clicked
+#accessed in search results, landing page, and profile list of movies
 @app.route("/movie_review", methods=['POST', 'GET'])
 def get_movie():
     if session.get('username'):
@@ -130,6 +133,7 @@ def get_movie():
         # movie info is not listed in the OMDB API
         return render_template("movie_review.html", title=movie[0].replace("_", " "), year="N/A", genre="N/A", plot="N/A", pic="N/A", review=review, loggedIn=login, url=url[0], director = "N/A",new=database.check(session.get('username'), movie[0]))
 
+    
 if __name__ == "__main__":
     app.debug = True
     app.run()

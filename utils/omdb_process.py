@@ -50,16 +50,3 @@ def get_info(query):
     info["Poster"] = d["Poster"]
     info["Director"] = d["Director"]
     return info
-
-'''
-def get_movie_data(query):
-    q = nyt.get_title(query)
-    for name in q:
-        #print name
-        d = access_url(name)
-    return d
-'''
-
-
-#testing
-#print get_info('silence of the lambs')
