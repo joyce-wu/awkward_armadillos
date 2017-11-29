@@ -195,12 +195,28 @@ moiT -- 2017-11-26 20:34
 -----------------------
 Passwords are hashed
 
+======================================================
 joyceW -- 2017-11-27 13:19:07
+-----------------------
 changed homepage
 
+======================================================
 joyceW -- 2017-11-27 15:53:41
+-----------------------
 stress testing
 
+======================================================
 joyceW -- 2017-11-28 13:15:33
+-----------------------
 Stress testing
 
+======================================================
+wangK -- 2017-11-28 20:30
+-----------------------
+More testing
+Lots of broken things! But patched them all up
+*Can only save a movie one time
+*Logout root doesn't return value error
+*Weird search results( "N O  R E S U L T S .") fixed
+*New API keys activated and working
+======================================================
