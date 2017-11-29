@@ -60,8 +60,11 @@ def search_results(query=""):
             title = a["display_title"].replace(" ", "_")
             l.append(title)
             l.append(a["link"]["url"])
-            print scraper.convert(a["summary_short"])
+            
+              #THIS print statement right here breaks the search fxn
+            #print scraper.convert(a["summary_short"])
             l.append(scraper.convert(a["summary_short"]))
+            #l.append(a["summary_short"])
             #append sublist to main result list
             results.append(l)
             l = []
@@ -97,3 +100,5 @@ def get_review(url):
         except:
             print "No review found"
     '''
+
+#print search_results()

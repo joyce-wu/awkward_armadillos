@@ -3,6 +3,7 @@ awkward_armadillos
 P #1: arRESTed development
 Kelly Wang, Tiffany Moi, Joyce Wu, Jen Yu
 '''
+
 import os
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from utils import nyt_process, omdb_process, auth, database
@@ -71,6 +72,7 @@ def profile():
 def logout():
     if not session.get('username'):
         flash("Yikes! You're not logged in")
+        return redirect(url_for('authentication'))
     else:
         flash("Yay! You've successfully logged out")
         session.pop('username')

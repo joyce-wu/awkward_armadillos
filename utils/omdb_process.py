@@ -60,5 +60,6 @@ def get_movie_data(query):
     return d
 '''
 
+
 #testing
 #print get_info('silence of the lambs')

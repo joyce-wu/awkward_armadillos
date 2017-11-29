@@ -1,4 +1,5 @@
 import sqlite3
+from flask import request, flash
 
 # only has login functionality so far
 
@@ -57,15 +58,22 @@ def get_user_history(user):
     db.close()
     return movies
 
+#add movie into user's list of saved movies 
 def add(user, movie, plot, url):
     db = sqlite3.connect("data/filmadillo.db")
     c = db.cursor()
     vals = [user, movie, plot, url]
-    x = c.execute("INSERT INTO history VALUES(?, ?, ?, ?)", vals)
+    #hass the movie already saved?
+    if check(user, movie) == True:
+        x = c.execute("INSERT INTO history VALUES(?, ?, ?, ?)", vals)
+    else:
+        print "nooooooo"
     print"\n\nhere\n\n"
     db.commit()
     db.close()
 
+#looks for this movie where the person who saved it is this user
+#to check if the movie has already been saved
 def check(user, movie):
     db = sqlite3.connect("data/filmadillo.db")
     c = db.cursor()
@@ -80,6 +88,7 @@ def check(user, movie):
     db.close()
     return True
 
+#remove this movie from the user's list
 def remove(user, movie):
     db = sqlite3.connect("data/filmadillo.db")
     c = db.cursor()
