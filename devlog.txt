@@ -211,6 +211,12 @@ joyceW -- 2017-11-28 13:15:33
 Stress testing
 
 ======================================================
+moiT -- 2017-11-28 13:22
+-----------------------
+Fixed issue with links in review - now shows all text
+Fixed weird HTML decimal characters - now in unicode
+
+======================================================
 wangK -- 2017-11-28 20:30
 -----------------------
 More testing
