@@ -58,9 +58,9 @@ $ python app.py
 ```
 View this webpage by navigating to ```localhost:5000``` in your web browser. 
 
+### Additional Resources
 
 NYT Movie Reviews API: 
-
 [GoogDrive Doc](https://docs.google.com/a/stuy.edu/document/d/138g9mcEWftJDkWSIxSlhi7eVU6CKA_JUWlwOUcjP1sA/edit?usp=drive_web)
 
 [Source Documentation](http://developer.nytimes.com/movie_reviews_v2.json)
